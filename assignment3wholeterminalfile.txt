@@ -1,0 +1,220 @@
+abhinesh@abhinesh:~$ sudo mysql -u debian-sys-maint -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 4
+Server version: 5.7.29-0ubuntu0.18.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> create database Assignment3;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> use Assignment3
+Database changed
+mysql> create table customer(c_id int primary key NOT NULL,c_name varchar(220) NOT NULL);
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> desc customer
+    -> , 
+,
+^C
+mysql> desc customer;
++--------+--------------+------+-----+---------+-------+
+| Field  | Type         | Null | Key | Default | Extra |
++--------+--------------+------+-----+---------+-------+
+| c_id   | int(11)      | NO   | PRI | NULL    |       |
+| c_name | varchar(220) | NO   |     | NULL    |       |
++--------+--------------+------+-----+---------+-------+
+2 rows in set (0.01 sec)
+
+mysql> create table salesperson(s_id int primary key NOT NULL,s_name varchar(220) NOT NULL);
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> desc salesperson;
++--------+--------------+------+-----+---------+-------+
+| Field  | Type         | Null | Key | Default | Extra |
++--------+--------------+------+-----+---------+-------+
+| s_id   | int(11)      | NO   | PRI | NULL    |       |
+| s_name | varchar(220) | NO   |     | NULL    |       |
++--------+--------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> create table OrderTable(o_id int primary key NOT NULL,qty varchar(220) NOT NULL,c_id int ,s_id int ,foreign key(c_id) references customer(c_id),foreign key(s_id) references salesperson(s_id));
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> desc OrderTable;
++-------+--------------+------+-----+---------+-------+
+| Field | Type         | Null | Key | Default | Extra |
++-------+--------------+------+-----+---------+-------+
+| o_id  | int(11)      | NO   | PRI | NULL    |       |
+| qty   | varchar(220) | NO   |     | NULL    |       |
+| c_id  | int(11)      | YES  | MUL | NULL    |       |
+| s_id  | int(11)      | YES  | MUL | NULL    |       |
++-------+--------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> insert into customer(c_id,c_name) values(1,"R");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into customer(c_id,c_name) values(2,"s");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into customer(c_id,c_name) values(3,"l");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into customer(c_id,c_name) values(4,"g");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into salesperson(s_id,s_name) values(1,"v");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into salesperson(s_id,s_name) values(1,"sm");
+ERROR 1062 (23000): Duplicate entry '1' for key 'PRIMARY'
+mysql> insert into salesperson(s_id,s_name) values(2,"sm");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into salesperson(s_id,s_name) values(3,"abhi");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into salesperson(s_id,s_name) values(3,"Priyanshu");
+ERROR 1062 (23000): Duplicate entry '3' for key 'PRIMARY'
+mysql> insert into salesperson(s_id,s_name) values(4,"Priyanshu");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into OrderTable(o_id,qty,c_id,s_id) values(1,"100",1,2);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into OrderTable(o_id,qty,c_id,s_id) values(2,"500",3,2);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into OrderTable(o_id,qty,c_id,s_id) values(3,"500",1,3);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into OrderTable(o_id,qty,c_id,s_id) values(4,"700",3,4);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> desc customer;
++--------+--------------+------+-----+---------+-------+
+| Field  | Type         | Null | Key | Default | Extra |
++--------+--------------+------+-----+---------+-------+
+| c_id   | int(11)      | NO   | PRI | NULL    |       |
+| c_name | varchar(220) | NO   |     | NULL    |       |
++--------+--------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> desc salesperson
+    -> 
+    -> s
+    -> a
+    -> as
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'a
+as' at line 4
+mysql> desc salesperson;
++--------+--------------+------+-----+---------+-------+
+| Field  | Type         | Null | Key | Default | Extra |
++--------+--------------+------+-----+---------+-------+
+| s_id   | int(11)      | NO   | PRI | NULL    |       |
+| s_name | varchar(220) | NO   |     | NULL    |       |
++--------+--------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> desc OrderTable;
++-------+--------------+------+-----+---------+-------+
+| Field | Type         | Null | Key | Default | Extra |
++-------+--------------+------+-----+---------+-------+
+| o_id  | int(11)      | NO   | PRI | NULL    |       |
+| qty   | varchar(220) | NO   |     | NULL    |       |
+| c_id  | int(11)      | YES  | MUL | NULL    |       |
+| s_id  | int(11)      | YES  | MUL | NULL    |       |
++-------+--------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> select S_Name from SalesPerson right join OrderTable ON SalesPerson.s_Id =OrderTable.s_Id;
+ERROR 1146 (42S02): Table 'Assignment3.SalesPerson' doesn't exist
+mysql> select S_Name from SalesPerson right join OrderTable ON salesperson.s_Id =ordertable.s_Id;
+ERROR 1146 (42S02): Table 'Assignment3.SalesPerson' doesn't exist
+mysql> select * from salesperson right join OrderTable ON salesperson.s_Id =ordertable.s_Id;
+ERROR 1054 (42S22): Unknown column 'ordertable.s_Id' in 'on clause'
+mysql> select * from salesperson right join OrderTable ON salesperson.s_Id =OrderTable.s_Id;
++------+-----------+------+-----+------+------+
+| s_id | s_name    | o_id | qty | c_id | s_id |
++------+-----------+------+-----+------+------+
+|    2 | sm        |    1 | 100 |    1 |    2 |
+|    2 | sm        |    2 | 500 |    3 |    2 |
+|    3 | abhi      |    3 | 500 |    1 |    3 |
+|    4 | Priyanshu |    4 | 700 |    3 |    4 |
++------+-----------+------+-----+------+------+
+4 rows in set (0.01 sec)
+
+mysql> select S_Name from salesperson where (select count(*) from OrderTable where salesperson.S_id = OrderTable.S_id)>1;
++--------+
+| S_Name |
++--------+
+| sm     |
++--------+
+1 row in set (0.00 sec)
+
+mysql> select * from salesperson right join OrderTable ON salesperson.s_Id =OrderTable.s_Id;
++------+-----------+------+-----+------+------+
+| s_id | s_name    | o_id | qty | c_id | s_id |
++------+-----------+------+-----+------+------+
+|    2 | sm        |    1 | 100 |    1 |    2 |
+|    2 | sm        |    2 | 500 |    3 |    2 |
+|    3 | abhi      |    3 | 500 |    1 |    3 |
+|    4 | Priyanshu |    4 | 700 |    3 |    4 |
++------+-----------+------+-----+------+------+
+4 rows in set (0.00 sec)
+
+mysql> create index cf on customer(c_name);
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> show index from customer;
++----------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+| Table    | Non_unique | Key_name | Seq_in_index | Column_name | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment |
++----------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+| customer |          0 | PRIMARY  |            1 | c_id        | A         |           4 |     NULL | NULL   |      | BTREE      |         |               |
+| customer |          1 | cf       |            1 | c_name      | A         |           4 |     NULL | NULL   |      | BTREE      |         |               |
++----------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+2 rows in set (0.00 sec)
+
+mysql> show index from customer;
++----------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+| Table    | Non_unique | Key_name | Seq_in_index | Column_name | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment |
++----------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+| customer |          0 | PRIMARY  |            1 | c_id        | A         |           4 |     NULL | NULL   |      | BTREE      |         |               |
+| customer |          1 | cf       |            1 | c_name      | A         |           4 |     NULL | NULL   |      | BTREE      |         |               |
++----------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+2 rows in set (0.00 sec)
+
+mysql> select OrderTable.O_Id,salesperson.S_Name,OrderTable.C_Id from salesperson right join OrderTable ON salesperson.S_Id = OrderTable.S_Id; 
++------+-----------+------+
+| O_Id | S_Name    | C_Id |
++------+-----------+------+
+|    1 | sm        |    1 |
+|    2 | sm        |    3 |
+|    3 | abhi      |    1 |
+|    4 | Priyanshu |    3 |
++------+-----------+------+
+4 rows in set (0.00 sec)
+
+mysql> desc OrderTable;
++-------+--------------+------+-----+---------+-------+
+| Field | Type         | Null | Key | Default | Extra |
++-------+--------------+------+-----+---------+-------+
+| o_id  | int(11)      | NO   | PRI | NULL    |       |
+| qty   | varchar(220) | NO   |     | NULL    |       |
+| c_id  | int(11)      | YES  | MUL | NULL    |       |
+| s_id  | int(11)      | YES  | MUL | NULL    |       |
++-------+--------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> 
+
