@@ -1,0 +1,68 @@
+#box1{
+    
+    height: 100px;
+}
+#heading{
+    margin-left: 20px;
+    padding-top: 15px;
+    color: blue;
+}
+#nav{
+    width: 200px; 
+    float: right; 
+    margin-bottom: 10px;
+   
+}
+#hr{
+    border: 1px solid;
+    color: #bfc9ca ;
+}
+#box2{
+    width: 500px;
+    height: 90px;
+    background-color: #bfc9ca;
+    border: 1px solid ;
+    padding-bottom: 10px;
+}
+#form{
+    width: 500px;
+    height: 470px;
+    border: 1px solid;
+}
+#bug{
+    color: white;
+}
+#tab{
+    margin-left: 20px;
+    width: 400px;
+}
+#drop1{
+    width: 340px; 
+    border-radius: 6px;
+    background-color: #33AFFF; 
+}
+#drop2{
+    width: 340px;
+    border-radius: 6px;
+    background-color: #33AFFF
+}
+#drop3{
+    width: 340px;
+    border-radius: 6px;
+    background-color: #33AFFF;
+}
+#last{
+    background-color:   #bfc9ca ; 
+    width: 500px; 
+    height: 70px; 
+    margin-left: 320px;
+    border: 1px solid;
+}
+#submit{
+    background-color: #33AFFF;
+    color: white;
+    border-radius: 8px;
+    font-size: 20px; 
+    margin-top: 20px;
+    margin-left: 400px;
+}
