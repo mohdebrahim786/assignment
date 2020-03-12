@@ -1,0 +1,51 @@
+<?php
+/**
+ * Implementation of hook_form_alter
+ */
+function mymodule_update_1234(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id)
+{
+      \Drupal\field\Entity\FieldStorageConfig::create(array(
+        'field_name' => 'field_akash',
+        'entity_type' => 'node',
+        'type' => 'text',
+        'cardinality' => -1,
+      ))->save();
+
+      \Drupal\field\Entity\FieldConfig::create([
+        'field_name' => 'field_akash',
+        'entity_type' => 'node',
+        'bundle' => 'hello',
+        'label' => 'qwerty',
+      ])->save();
+
+      entity_get_form_display('node', 'hello', 'default')
+        ->setComponent('field_akash', array(
+          'type' => 'text_textfield',
+        ))
+        ->save();
+
+      entity_get_display('node', 'hello', 'default')
+        ->setComponent('field_akash', array(
+          'type' => 'text_default',
+        ))
+        ->save();
+}
+function mymodule_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id)
+{
+  if ($form_id=='node_hello_form') {
+    $form['#validate'][] = 'qwerty';
+    // kint($form['#validate']);
+    
+    // die;
+  }
+}
+function qwerty($form, \Drupal\Core\Form\FormStateInterface $form_state){
+  // kint($form_state->getValue('field_akash'));die;
+  $val1=$form_state->getValue('field_akash')[0]['value'];
+  //kint($val1);die;
+  if(!preg_match("/^[A-Z][a-zA-Z]$/", $val1)){
+    // kint($val1);die;
+    $form_state->setErrorByName('field_akash', t('Name must start with capital letter'));
+  }
+  // die;
+}

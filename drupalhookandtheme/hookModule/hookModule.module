@@ -1,0 +1,42 @@
+<?php
+
+
+  function hookModule_page_top(array &$page_top) 
+  {
+    $page_top['hookModule'] = 
+    [
+      '#markup' => '<div role="contentinfo" aria-label="Status message" class="messages">
+            <h2>TOP MESSAGE</h2>HI EVERYONE THIS IS TOP</div>',
+    ];
+  }
+
+  function hookModule_page_bottom(array &$page_bottom) 
+  {
+    $page_bottom['hookmodule'] = [
+      '#markup' => '<div role="contentinfo" aria-label="Status message" class="messages">
+                    <h2>BOTTOM MESSAGE</h2>THIS IS BOTTOM</div>',
+    ];
+  }
+  function hookModule_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id)
+  {
+     
+      if($form_id == 'comment_comment_form')
+      {
+        $form['actions']['submit']['#value'] = t('SAVE');
+        $form['actions']['preview']['#value'] = t('VIEW');
+      }
+  }
+
+  function hookModule_user_format_name_alter(&$name, $account) 
+  {
+    // Display the user's uid instead of name.
+    if ($account
+      ->id()) 
+    {
+      $name = t(strtoupper($name).' : @uid', [
+        '@uid' => $account
+          ->id(),
+      ]);
+    }
+  } 
+
