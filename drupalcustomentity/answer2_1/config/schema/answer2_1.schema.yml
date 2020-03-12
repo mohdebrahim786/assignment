@@ -1,0 +1,16 @@
+answer2_1.answer2_1.*:
+  type: config_entity
+  label: 'Answer2_1 config'
+  mapping:
+    id:
+      type: string
+      label: 'ID'
+    label:
+      type: label
+      label: 'Label'
+    uuid:
+      type: string
+
+    timeslot:
+      type: string
+      lable: 'Timeslot'

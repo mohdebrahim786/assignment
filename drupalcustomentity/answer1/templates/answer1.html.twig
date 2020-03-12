@@ -1,0 +1,22 @@
+{#
+/**
+ * @file answer1.html.twig
+ * Default theme implementation to present Answer1 data.
+ *
+ * This template is used when viewing Answer1 pages.
+ *
+ *
+ * Available variables:
+ * - content: A list of content items. Use 'content' to print all content, or
+ * - attributes: HTML attributes for the container element.
+ *
+ * @see template_preprocess_answer1()
+ *
+ * @ingroup themeable
+ */
+#}
+<div{{ attributes.addClass('answer1') }}>
+  {% if content %}
+    {{- content -}}
+  {% endif %}
+</div>

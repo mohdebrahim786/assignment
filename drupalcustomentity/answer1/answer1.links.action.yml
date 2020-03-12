@@ -1,0 +1,5 @@
+entity.answer1.add_form:
+  route_name: entity.answer1.add_form
+  title: 'Add Answer1'
+  appears_on:
+    - entity.answer1.collection

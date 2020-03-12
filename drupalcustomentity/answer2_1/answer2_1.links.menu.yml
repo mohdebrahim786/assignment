@@ -1,0 +1,8 @@
+
+# Answer2_1 menu items definition
+entity.answer2_1.collection:
+  title: 'Answer2_1'
+  route_name: entity.answer2_1.collection
+  description: 'List Answer2_1 (bundles)'
+  parent: system.admin_structure
+  weight: 99

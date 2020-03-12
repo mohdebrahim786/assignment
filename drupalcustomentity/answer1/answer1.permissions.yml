@@ -1,0 +1,20 @@
+add answer1 entities:
+  title: 'Create new Answer1 entities'
+
+administer answer1 entities:
+  title: 'Administer Answer1 entities'
+  description: 'Allow to access the administration form to configure Answer1 entities.'
+  restrict access: true
+
+delete answer1 entities:
+  title: 'Delete Answer1 entities'
+
+edit answer1 entities:
+  title: 'Edit Answer1 entities'
+
+view published answer1 entities:
+  title: 'View published Answer1 entities'
+
+view unpublished answer1 entities:
+  title: 'View unpublished Answer1 entities'
+

@@ -1,0 +1,14 @@
+
+# Answer1 menu items definition
+entity.answer1.collection:
+  title: 'Answer1 list'
+  route_name: entity.answer1.collection
+  description: 'List Answer1 entities'
+  parent: system.admin_structure
+  weight: 100
+
+answer1.admin.structure.settings:
+  title: 'Answer1 settings'
+  description: 'Configure Answer1 entities'
+  route_name: answer1.settings
+  parent: system.admin_structure

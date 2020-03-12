@@ -1,0 +1,21 @@
+# Answer1 routing definition
+answer1.settings_tab:
+  route_name: answer1.settings
+  title: 'Settings'
+  base_route: answer1.settings
+
+entity.answer1.canonical:
+  route_name: entity.answer1.canonical
+  base_route: entity.answer1.canonical
+  title: 'View'
+
+entity.answer1.edit_form:
+  route_name: entity.answer1.edit_form
+  base_route: entity.answer1.canonical
+  title: 'Edit'
+
+entity.answer1.delete_form:
+  route_name:  entity.answer1.delete_form
+  base_route:  entity.answer1.canonical
+  title: Delete
+  weight: 10
